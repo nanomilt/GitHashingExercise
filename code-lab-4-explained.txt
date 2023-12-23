@@ -1,0 +1,69 @@
+example_sleep:
+i) How the code is executed:
+   The code in example_sleep.c is executed by compiling the C source file using a C compiler (e.g., gcc). The resulting executable, named 'example_sleep,' is then run in the terminal.
+
+ii) Example usage and its output:
+   Running './example_sleep' in the terminal triggers the execution of the C program. The program continuously prints "Going to sleep for a second..." in an infinite loop. If interrupted by pressing Ctrl+C, it catches the SIGINT signal, prints "Caught signal 2, coming out...", and exits.
+
+iii) Brief explanation of the actual C code:
+   The C code in example_sleep.c serves as a demonstration of signal handling in C programming. It establishes a signal handler for SIGINT, enabling the program to respond gracefully to user interruptions. The main loop features a print statement for a sleep message and utilizes the sleep function for a one-second delay. Upon receiving a SIGINT signal, the sighandler function is invoked to print a termination message and exit the program.
+example_kill:
+i) How the code is executed:
+   The code in example_kill.c is executed by compiling the C source file using a C compiler (e.g., gcc). The resulting executable, named 'example_kill,' is then run in the terminal.
+
+ii) Example usage and its output:
+   Running './example_kill n' in the terminal, where 'n' is the number of times the kill() function for SIGUSR1 is called, triggers the execution of the C program. The program prints the count of times the kill() function was called and the count of times the signal catching function was invoked.
+
+iii) Brief explanation of the actual C code:
+   The C code in example_kill.c demonstrates signal handling using the SIGUSR1 signal. It sets up a signal-catching function (`catcher`) to handle signals sent by the `sendsig` function. The main function parses the input argument to determine the number of times to call the `sendsig` function, which, in turn, calls the kill() function for SIGUSR1. The program prints statistics on the number of times signals were sent and caught.
+
+example_pause:
+i) How the code is executed:
+   The code in example_pause.c is executed by compiling the C source file using a C compiler (e.g., gcc). The resulting executable, named 'example_pause,' is then run in the terminal.
+
+ii) Example usage and its output:
+   Running './example_pause n' in the terminal, where 'n' is the duration of the alarm timer in seconds, triggers the execution of the C program. The program sets up a signal handler for SIGALRM, sets an alarm timer for 'n' seconds, and then enters a pause. During this time, it prints timestamps before and after the pause.
+
+iii) Brief explanation of the actual C code:
+   The C code in example_pause.c demonstrates the use of the alarm() and pause() functions for timing and signal handling. It sets up a signal-catching function (`catcher`) for the SIGALRM signal. The main function parses the input argument to determine the duration of the alarm timer. It then sets the alarm timer, prints a timestamp before entering the pause, and prints another timestamp after the pause is interrupted by the SIGALRM signal.
+
+immun2ctrlC:
+i) How the code is executed:
+   The code in immun2ctrlC.c is executed by compiling the C source file using a C compiler (e.g., gcc). The resulting executable, named 'immun2ctrlC,' is then run in the terminal.
+
+ii) Example usage and its output:
+   Running './immun2ctrlC n' in the terminal, where 'n' is the sleep duration in seconds, triggers the execution of the C program. The program sets up a signal handler to ignore the SIGINT signal, sleeps for 'n' seconds, and prints a message indicating the sleep duration.
+
+iii) Brief explanation of the actual C code:
+   The C code in immun2ctrlC.c demonstrates the use of signal handling to ignore the SIGINT signal. The main function parses the input argument to determine the sleep duration. It then sets up a signal handler using `signal(SIGINT, SIG_IGN)` to ignore SIGINT. The program prints a message indicating the sleep duration and sleeps for the specified time.
+
+pipe_1:
+i) How the code is executed:
+   The code in pipe_1.c is executed by compiling the C source file using a C compiler (e.g., gcc). The resulting executable, named 'pipe_1,' is then run in the terminal.
+
+ii) Example usage and its output:
+   Running './pipe_1 n' in the terminal, where 'n' is the number of child processes to create, triggers the execution of the C program. The program creates 'n' child processes, each writing a message to a pipe. The parent process reads from the pipe and prints the received messages from the children.
+
+iii) Brief explanation of the actual C code:
+   The C code in pipe_1.c demonstrates interprocess communication using a pipe. The main function creates 'N' child processes, each invoking the `child` function to write a message to the pipe. The parent process reads from the pipe and prints the received messages from the children. The pipe facilitates communication between the parent and child processes.
+
+pipe_2:
+i) How the code is executed:
+   The code in pipe_2.c is executed by compiling the C source file using a C compiler (e.g., gcc). The resulting executable, named 'pipe_2,' is then run in the terminal.
+
+ii) Example usage and its output:
+   Running './pipe_2' in the terminal triggers the execution of the C program. The program creates a pipe, forks a child process, and communicates between the parent and child processes. The parent writes a message to the pipe, and the child reads from the pipe, printing the received message to the standard output.
+
+iii) Brief explanation of the actual C code:
+   The C code in pipe_2.c illustrates interprocess communication using a pipe. The main function creates a pipe and forks a child process. The parent writes a message to the pipe, and the child reads from the pipe, printing the received message to the standard output. The code demonstrates the basic use of pipes for communication between parent and child processes.
+
+signal:
+i) How the code is executed:
+   The code in signal.c is executed by compiling the C source file using a C compiler (e.g., gcc). The resulting executable, named 'signal,' is then run in the terminal.
+
+ii) Example usage and its output:
+   Running './signal [-10] command' in the terminal, where 'command' is a command to execute and '-10' is an optional argument to set the alarm duration in seconds, triggers the execution of the C program. The program forks a child process to execute the specified command and sets up a signal handler for SIGALRM. It triggers an alarm after the specified duration, and if the child process completes before the alarm, it waits for the child process. If the child is killed, it prints a message.
+
+iii) Brief explanation of the actual C code:
+   The C code in signal.c demonstrates the usage of signals and process control. It forks a child process to execute a specified command. The main process sets up a signal handler for SIGALRM, triggers an alarm after a specified duration, and waits for the child process. If the child process is killed, it prints a message indicating that the child process was terminated.
+
