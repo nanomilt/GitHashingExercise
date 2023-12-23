@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <signal.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 int count = 0;
 
@@ -18,7 +19,7 @@ int main() {
     signal(SIGINT, custom_handler);
     
     while (1) {
-        // Your program's main logic here
+        sleep(1);
     }
 
     return 0;
