@@ -12,7 +12,6 @@ int main() {
     signal(SIGINT, handle_sigint);
     
     while (1) {
-
         sleep(1);
     }
 
